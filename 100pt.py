@@ -31,11 +31,28 @@ class MyApp:
 		self.myContainer1.pack()
 		
 		self.button1 = Button(self.myContainer1)
-		self.button1.configure(text="Up", background= "green")
+		self.button1.configure(text="Up", background= "blue")
 		self.button1.grid(row=0,column=0)
+		
+		self.button5 = Button(self.myContainer1)
+		self.button5.configure(text="Left", background= "violet")
+		self.button5.grid(row=0,column=1)
+		
+		self.button2 = Button(self.myContainer1)
+		self.button2.configure(text="Right", background= "magenta")
+		self.button2.grid(row=0,column=2)
+		
+		self.button4 = Button(self.myContainer1)
+		self.button4.configure(text="Down", background= "pink")
+		self.button4.grid(row=1,column=1)
+				
 					
 		# "Bind" an action to the first button												
 		self.button1.bind("<Button-1>", self.button1Click)
+		self.button5.bind("<Button-1>", self.button5Click)
+		self.button2.bind("<Button-1>", self.button2Click)
+		self.button4.bind("<Button-1>", self.button4Click)
+		
 
 		  
 		# This creates the drawpad - no need to change this 
@@ -67,6 +84,23 @@ class MyApp:
                 x1,y1,x2,y2 = drawpad.coords(player)
 
                 # Do your if statement - remember to return True if successful!
+                
+        def button2Click(self, event):   
+		drawpad.move(player, 20, 0)
+                global oval
+		global drawpad
+	
+	def button5Click(self, event):   
+		drawpad.move(player, -20, 0)
+                global oval
+		global drawpad
+	
+	def button4Click(self, event):   
+		drawpad.move(player, 0, 20)
+                global oval
+		global drawpad	
+		
+	
 direction = 1
 def animate():
     global direction
