@@ -49,6 +49,7 @@ class MyApp:
 		global drawpad
                 x1,y1,x2,y2 = drawpad.coords(player)
 		# Get the coords of our target
+		drawpad.move(player, 0, -20)
 
 
 		# Ensure that we are doing our collision detection
@@ -66,8 +67,18 @@ class MyApp:
                 x1,y1,x2,y2 = drawpad.coords(player)
 
                 # Do your if statement - remember to return True if successful!
-                
-	    
+direction = 1
+def animate():
+    global direction
+    global target
+    targetx1,targety1,targetx2,targety2 = drawpad.coords(target)
+    if targetx2 > drawpad.winfo_width():
+            direction = - 1
+    elif targetx1 < 0: 
+            direction = 1
+    drawpad.move(target,direction,0)
+    drawpad.after(1,animate)
+animate()	    
 		
 myapp = MyApp(root)
 
