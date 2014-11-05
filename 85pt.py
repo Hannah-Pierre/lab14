@@ -15,7 +15,7 @@ root = Tk()
 drawpadwidth = 480
 drawpadheight = 320
 drawpad = Canvas(root, width=drawpadwidth, height=drawpadheight, background='white')
-oval = drawpad.create_oval(160,160,320,320, fill="red")
+oval = drawpad.create_oval(160,160,320,320, fill="pink")
 
 class MyApp:
 	def __init__(self, parent):
@@ -26,12 +26,17 @@ class MyApp:
 		self.myContainer1.pack()
 		
 		self.button1 = Button(self.myContainer1)
-		self.button1.configure(text="Left", background= "green")
+		self.button1.configure(text="Left", background= "magenta")
 		self.button1.grid(row=0,column=0)
+		
+		self.button2 = Button(self.myContainer1)
+		self.button2.configure(text="Right", background= "violet")
+		self.button2.grid(row=0,column=1)	
 		
 	
 		# "Bind" an action to the first button												
 		self.button1.bind("<Button-1>", self.button1Click)
+		self.button2.bind("<Button-1>", self.button2Click)
 		 
 		  
 		# This creates the drawpad - no need to change this 
@@ -43,10 +48,24 @@ class MyApp:
 		# Make the oval move to the left!
                 # "global" makes sure that we can access our oval and our drawpad
                 # Add in boundary detection
+                drawpad.move(oval, -20, 0)
+                x1,y1,x2,y2 = drawpad.coords(oval)
 		global oval
 		global drawpad
 		global drawpadwidth
 		global drawpadheight
+		if x1 < -1 :
+		    drawpad.move(oval, 20, 0)
+		
+	def button2Click(self, event):   
+		drawpad.move(oval, 20, 0)
+		x1,y1,x2,y2 = drawpad.coords(oval)
+                global oval
+		global drawpad	
+		global drawpadwidth
+		global drawpadheight
+		if x2 > drawpadwidth :
+		    drawpad.move(oval, -20, 0)
 	
 	# Add the button2Click method
 		
