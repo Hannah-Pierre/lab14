@@ -17,8 +17,8 @@ targetx1 = 200
 targety1 = 20
 targetx2 = 280
 targety2 = 80
-target = drawpad.create_rectangle(targetx1,targety1,targetx2,targety2, fill="blue")
-player = drawpad.create_rectangle(240,240,260,260, fill="pink")
+target = drawpad.create_rectangle(targetx1,targety1,targetx2,targety2, fill="magenta")
+player = drawpad.create_oval(240,240,260,260, fill="blue")
 
 
 
@@ -31,15 +31,15 @@ class MyApp:
 		self.myContainer1.pack()
 		
 		self.button1 = Button(self.myContainer1)
-		self.button1.configure(text="Up", background= "blue")
+		self.button1.configure(text="Up", background= "pink")
 		self.button1.grid(row=0,column=0)
 		
 		self.button5 = Button(self.myContainer1)
-		self.button5.configure(text="Left", background= "violet")
+		self.button5.configure(text="Left", background= "pink")
 		self.button5.grid(row=0,column=1)
 		
 		self.button2 = Button(self.myContainer1)
-		self.button2.configure(text="Right", background= "magenta")
+		self.button2.configure(text="Right", background= "pink")
 		self.button2.grid(row=0,column=2)
 		
 		self.button4 = Button(self.myContainer1)
